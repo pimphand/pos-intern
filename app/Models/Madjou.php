@@ -10,4 +10,9 @@ class Madjou extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function scopeIsExpired($query)
+    {
+        return $query->where('expired_at', '<', now());
+    }
 }

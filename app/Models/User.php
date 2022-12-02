@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Madjou::class);
     }
+
+    public function expired()
+    {
+        return $this->madjou()->expired_at < now() ? true : false;
+    }
 }
